@@ -85,7 +85,7 @@ def main_run(args):
     domain_data = conf.default_domain_data
 
     if 'executable' in domain_data:
-        return subprocess.call((domain_data['executable'], filename))
+        return os.system(' '.join((domain_data['executable'], '"%s"' % filename)))
 
     with open(filename, encoding="utf-8") as fh:
         data = run_solution(code_for_check(fh.read()))
